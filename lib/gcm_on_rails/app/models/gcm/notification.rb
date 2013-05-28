@@ -30,11 +30,7 @@ class Gcm::Notification < Gcm::Base
     #
     def send_notifications(notifications = Gcm::Notification.all(:conditions => {:sent_at => nil}, :joins => :device, :readonly => false))
 
-      if configatron.gcm_on_rails.delivery_format and configatron.gcm_on_rails.delivery_format == 'plain_text'
-        format = "plain_text"
-      else
-        format = "json"
-      end
+      format = "json"
 
       unless notifications.nil? || notifications.empty?
         api_key = Gcm::Connection.open

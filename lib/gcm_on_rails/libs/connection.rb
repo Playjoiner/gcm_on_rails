@@ -24,7 +24,7 @@ module Gcm
           data = "#{extra_data}#{post_data}"
         end
 
-        url_string = configatron.gcm_on_rails.api_url
+        url_string = CONFIG[:api_url]
         url = URI.parse url_string
         http = Net::HTTP.new(url.host, url.port)
         http.use_ssl = true
@@ -36,7 +36,7 @@ module Gcm
       end
 
       def open
-        configatron.gcm_on_rails.api_key
+        CONFIG[:api_key]
       end
     end
   end
